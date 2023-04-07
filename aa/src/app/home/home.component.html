@@ -1,0 +1,70 @@
+<!--<p>this home page</p>-->
+
+<!--<p [style]="titleStyle">ahla o marahbe b nes lkol</p>
+<button (click)="red()">show text</button>
+<button (click)="green()">hidden text</button>-->
+
+
+<!--<p>{{profile.lastName}} {{profile.firstName}}</p>
+<p>my web site is: {{profile.website}}</p>
+<p>my city is {{profile.city}}</p>
+<img [src]="linkImage">
+<a [href]="link">cliquer ici</a>-->
+
+
+<!--<h1>{{number}}</h1>
+<button (click)="inc()">incrument</button>
+<button (click)="dec()">decrement</button>-->
+
+<!--<h1>{{number}}</h1>
+<p>my name is {{profile.lastName}} {{profile.firstName}}</p>
+
+<input type="text"[(ngModel)] ="number">
+<input type="text"[(ngModel)] ="profile.firstName">
+<input type="text"[(ngModel)] ="profile.lastName">-->
+<!--<input type="text" [(ngModel)]="profile['firstName']">
+<button class="btn btn-primary" (click)="goToView()">View profile</button>
+<button class="btn btn-success" (click)="goToDetails()">Details profile </button>-->
+
+
+<!--
+<form #f="ngForm" (ngSubmit)="add(f)">
+    <input type="text" name="firstName" placeholder="firstname" #firstname="ngModel" ngModel required minlength="5" maxlength="10">
+    <div class="alert alert-danger" *ngIf="firstname.errors?.['required'] && firstname.touched">
+        this firstname input is required 
+    </div >
+    <div class="alert alert-danger" *ngIf="firstname.touched && firstname.errors?.['minlength']">
+        minlength error
+    </div>
+
+    
+    <br>
+    <input type="text" name="lastName" placeholder="lastname" #lastname="ngModel" ngModel required minlength="10">
+    <div class="alert alert-danger" *ngIf="lastname.errors?.['required'] && lastname.touched">
+        this lastname input is required 
+      </div>
+      <div class="alert alert-danger" *ngIf="lastname.touched && lastname.errors?.['minlength']">
+        minlength error
+    </div>
+    <br>
+    <input type="number" name="age" placeholder="age" ngModel required >
+    <br>
+    
+    <button type="submit" [disabled]="f.invalid">Add</button>
+
+
+
+</form>
+-->
+
+<form [formGroup]="myForm" (ngSubmit)="print()">
+    <input type="text" formControlName="fname"placeholder="fname" required >
+    <div class="alert alert-danger" *ngIf="myForm.get('fname').touched && myForm.get('fname').hasError('required')"> this input fname is required </div>
+    <div class="alert alert-danger" *ngIf="myForm.get('fname').touched && myForm.get('fname').hasError('minlength') "> this input fname should be minimun 5 caracteres </div>
+    <input type="text" formControlName="age" placeholder="age" required>
+    <div class="alert alert-danger" *ngIf="myForm.get('age').touched && myForm.get('age').hasError('required')"> this input age is required </div>
+    <input type="text" formControlName="email" placeholder="email" required>
+    <div class="alert alert-danger" *ngIf="myForm.get('email').touched && myForm.get('email').hasError('required')"> this input email is required </div>
+    <div class="alert alert-danger" *ngIf="myForm.get('email').hasError('email')"> this is not email </div>
+    <button type="submit" [disabled]="myForm.invalid">Print</button>
+</form>
